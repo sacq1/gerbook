@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>攀岩技术训练：脚法精准度提升指南 | 山野之间</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 复用首页样式，稍作补充 */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8f4;
+            color: #2c2c2c;
+            line-height: 1.7;
+            background-image: radial-gradient(circle at 10% 20%, rgba(143,188,143,0.05) 0%, transparent 20%);
+        }
+        :root {
+            --primary: #2f5230;
+            --secondary: #8b5a2b;
+            --accent: #d9934e;
+            --light: #f1ede8;
+            --card-bg: rgba(255,255,255,0.8);
+            --backdrop-blur: blur(8px);
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        /* 导航与首页一致 */
+        .navbar {
+            background: rgba(47,82,48,0.85);
+            backdrop-filter: var(--backdrop-blur);
+            padding: 16px 0;
+            border-bottom: 2px solid var(--secondary);
+        }
+        .nav-container {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none;
+            text-shadow: 2px 2px 0 var(--secondary);
+        }
+        .nav-menu {
+            display: flex; gap: 2rem; list-style: none;
+        }
+        .nav-menu a {
+            color: white; text-decoration: none; font-weight: 600;
+            border-bottom: 2px solid transparent; transition: 0.2s;
+        }
+        .nav-menu a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+        @media (max-width:600px){
+            .nav-container{ flex-direction: column; gap:12px; }
+            .nav-menu{ gap:1.2rem; }
+        }
+
+        /* 文章头部 */
+        .post-header {
+            margin: 60px 0 30px;
+        }
+        .post-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .post-meta {
+            display: flex; gap: 20px; color: #5f5f5f; align-items: center;
+            flex-wrap: wrap;
+        }
+        .post-tag {
+            background: var(--secondary); color: white; padding: 4px 14px;
+            border-radius: 40px; font-size: 0.9rem;
+        }
+        .featured-image {
+            width: 100%; max-height: 450px; object-fit: cover;
+            border-radius: 32px; margin: 30px 0 30px;
+            box-shadow: 0 20px 25px -10px rgba(0,0,0,0.2);
+            border: 3px solid var(--accent);
+        }
+
+        /* 文章内容通用样式 */
+        .post-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--secondary);
+            margin: 40px 0 20px;
+            border-left: 8px solid var(--accent);
+            padding-left: 20px;
+        }
+        .post-content h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: var(--primary);
+        }
+        .post-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .post-content ul, .post-content ol {
+            margin-left: 30px;
+            margin-bottom: 1.8rem;
+        }
+        .post-content li {
+            margin-bottom: 8px;
+        }
+        .post-content blockquote {
+            border-left: 5px solid var(--accent);
+            background: rgba(139, 90, 43, 0.05);
+            padding: 20px 30px;
+            font-style: italic;
+            border-radius: 0 40px 40px 0;
+            margin: 30px 0;
+        }
+        .post-content img {
+            max-width: 100%;
+            border-radius: 24px;
+            margin: 20px 0;
+        }
+        .footnote {
+            background: rgba(47, 82, 48, 0.1);
+            padding: 20px;
+            border-radius: 30px;
+            margin: 40px 0;
+            border: 1px dashed var(--secondary);
+        }
+
+        .footer {
+            background: var(--primary); color: #ddd; padding: 32px 0;
+            margin-top: 80px; border-top: 6px solid var(--secondary);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap:20px;
+        }
+        .social-links a { color: white; font-size: 1.6rem; margin-left: 20px; transition: 0.2s; }
+        .social-links a:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo"><a href="index.html">山野之间·</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="#">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <article>
+            <header class="post-header">
+                <h1 class="post-title">攀岩技术训练：脚法精准度提升指南</h1>
+                <div class="post-meta">
+                    <span class="post-tag"><i class="fas-mountain"></i> 攀岩</span>
+                    <span><i class="far fa-calendar"></i> 2025年3月16日</span>
+                    <span><i class="far fa-clock"></i> 预计阅读 6 分钟</span>
+                </div>
+            </header>
+
+            <img class="featured-image" src="https://picsum.photos/id/1043/1000/500" alt="攀岩脚法训练">
+
+            <div class="post-content">
+                <p>很多岩友在进阶时都会遇到瓶颈：明明上肢力量不差，但一到小脚点就站不稳，或者总是用大腿发力代替脚尖。其实攀岩是“脚的运动”——精准的脚法能让你节省一半的力气。下面分享三个我每周都会练习的脚法专项训练，不需要岩馆，一面墙甚至家里的楼梯就能练。</p>
+
+                <h2>1. 静音攀爬 (Silent Feet)</h2>
+                <p>这是最经典的脚感训练。找一面平整的抱石墙或训练墙，要求自己在移动脚时<strong>完全不发出声音</strong>。每一脚放上去必须轻、稳、准，一旦发出“啪”的声响就重新开始。这个练习强迫你用脚尖去感知支点的细微起伏，找到最稳固的踩踏位置。</p>
+                <blockquote>
+                    <p>进阶版：闭眼爬低难度线路，完全靠脚底触觉判断支点。你会发现脚底原来有那么多“信息”。</p>
+                </blockquote>
+
+                <h2>2. 脚法标记训练</h2>
+                <p>拿一卷美纹纸，在训练墙上随意贴出20个小点（模拟微小脚点）。然后要求自己在攀爬时，每次换脚必须精准地踩在纸片中央，且不把纸踩掉。如果纸片移动或掉落，就退回到上一个点重新来。这个练习能极大提升脚尖的精确度和微调能力。</p>
+                <img src="https://picsum.photos/id/102/600/400" alt="标记训练示意" style="width:100%;">
+
+                <h2>3. 单脚平衡平移</h2>
+                <p>在横移（ traversing ）时，强迫自己只用一只脚移动，另一只脚全程悬空（或轻轻搭在岩壁上不用力）。这迫使你不断通过重心转移来维持平衡，并且能学会用脚来“推”而不是“蹬”。左右脚交替练习，一组5分钟，酸胀感会告诉你哪些肌肉平时没用到。</p>
+
+                <div class="footnote">
+                    <strong>📝 训练计划建议：</strong> 每次热身结束后，花15分钟做以上三个练习（每个5分钟），坚持一个月，你会发现上高脚、踩小点都变得从容很多。技术训练重在“觉知”，而不是次数。
+                </div>
+
+                <p>技术训练和体能训练最大的不同在于，它需要你时刻保持大脑清醒。下次去岩馆，不妨放下对难度的执着，专心打磨脚法，进步会在不知不觉中出现。</p>
+
+                <p><em>—— 如果你有独家脚法练习，欢迎在评论区分享。</em></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>© 2025 山野之间 · 保持热爱 奔赴山海</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
