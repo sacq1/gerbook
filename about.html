@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 | 山野之间</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 复用首页样式 */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8f4;
+            color: #2c2c2c;
+            line-height: 1.7;
+            background-image: radial-gradient(circle at 80% 30%, rgba(143,188,143,0.05) 0%, transparent 30%);
+        }
+        :root {
+            --primary: #2f5230;
+            --secondary: #8b5a2b;
+            --accent: #d9934e;
+            --card-bg: rgba(255,255,255,0.7);
+            --backdrop-blur: blur(8px);
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        .navbar {
+            background: rgba(47,82,48,0.85);
+            backdrop-filter: var(--backdrop-blur);
+            padding: 16px 0;
+            border-bottom: 2px solid var(--secondary);
+        }
+        .nav-container {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem; font-weight: 700; color: white; text-decoration: none;
+            text-shadow: 2px 2px 0 var(--secondary);
+        }
+        .nav-menu {
+            display: flex; gap: 2rem; list-style: none;
+        }
+        .nav-menu a {
+            color: white; text-decoration: none; font-weight: 600;
+            border-bottom: 2px solid transparent; transition: 0.2s;
+        }
+        .nav-menu a:hover, .nav-menu a.active { border-bottom-color: var(--accent); color: var(--accent); }
+        @media (max-width:600px){
+            .nav-container{ flex-direction: column; gap:12px; }
+            .nav-menu{ gap:1.2rem; }
+        }
+
+        .about-section {
+            background: var(--card-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border-radius: 48px;
+            padding: 48px;
+            margin: 60px 0;
+            border: 2px solid rgba(139,90,43,0.2);
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+        .about-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            float: right;
+            margin-left: 30px;
+            margin-bottom: 20px;
+            shape-outside: circle();
+        }
+        @media (max-width:600px){
+            .about-avatar {
+                float: none;
+                display: block;
+                margin: 0 auto 30px;
+            }
+        }
+        .about-section h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+        .about-section h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin: 40px 0 20px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        .about-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .signature {
+            font-family: 'Montserrat', cursive;
+            font-size: 2rem;
+            color: var(--primary);
+            text-align: right;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+
+        .footer {
+            background: var(--primary); color: #ddd; padding: 32px 0;
+            margin-top: 80px; border-top: 6px solid var(--secondary);
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap:20px;
+        }
+        .social-links a { color: white; font-size: 1.6rem; margin-left: 20px; transition: 0.2s; }
+        .social-links a:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo"><a href="index.html">山野之间·</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html" class="active">关于</a></li>
+                <li><a href="#">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="about-section">
+            <img class="about-avatar" src="https://picsum.photos/id/1005/300/300" alt="头像占位">
+            <h1>关于这座山野小站</h1>
+            <p>嗨，我是<strong>阿攀</strong> —— 一个把周末都扔在岩壁和山脊上的户外爱好者。攀岩六年，徒步十余条长线，从最初的“瞎爬”到后来痴迷于技术细节，我发现很多实用的训练方法和装备心得，都散落在各处，于是决定用博客把它们整理起来。</p>
+            <p>这里没有夸张的标题，只有亲身验证过的攀岩脚法、重心移动技巧，以及徒步中的轻量化方案和风险预判经验。希望这些文字能给同样爱山海的你一点点灵感。</p>
+
+            <h2>关于“山野之间”</h2>
+            <p>名字取自每次走在山脊线上，那种被群山环绕又渺小自由的感觉。博客采用极简设计，但每一处配色（苔绿、岩棕、夕阳橙）都来自我见过的山野色彩。代码自己手写，所以后期你想添加什么栏目，直接复制卡片就能扩充。</p>
+
+            <h2>主要话题</h2>
+            <ul style="margin-left:30px; font-size:1.2rem;">
+                <li><i class="fas-mountain" style="color:var(--accent);"></i> 攀岩技术：脚法、重心、动态、耐力</li>
+                <li><i class="fas fa-tree" style="color:var(--accent);"></i> 徒步/ backpacking：装备清单、路线记录</li>
+                <li><i class="fas fa-campground" style="color:var(--accent);"></i> 户外安全：地形判断、应急处理</li>
+            </ul>
+
+            <p style="margin-top:40px;">如果你想交流技术，或者约爬约走，欢迎通过下方社交媒体找到我。</p>
+
+            <div class="signature">—— 岩壁上见</div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>© 2025 山野之间 · 保持热爱 奔赴山海</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
