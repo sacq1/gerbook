@@ -2,17 +2,439 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>First Page</title>
+    <title>山野之间 · 户外技术博客</title>
+    <!-- Font Awesome 6 (免费图标库) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google 字体：干净现代的字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 重置 & 全局变量 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf8f4;  /* 米白底 */
+            color: #2c2c2c;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(143, 188, 143, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 70%, rgba(139, 90, 43, 0.05) 0%, transparent 25%);
+            min-height: 100vh;
+        }
+
+        /* 自定义变量 */
+        :root {
+            --primary: #2f5230;       /* 深苔绿 */
+            --secondary: #8b5a2b;      /* 岩土棕 */
+            --accent: #d9934e;          /* 夕阳橙 */
+            --light: #f1ede8;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --backdrop-blur: blur(8px);
+        }
+
+        /* 容器 */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: rgba(47, 82, 48, 0.85);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--secondary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0 var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            font-size: 1.1rem;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* 移动端菜单简单适配 */
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-menu {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* HERO 区域 */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 8vw, 4rem);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+            text-shadow: 4px 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #4a4a4a;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(4px);
+            padding: 12px 24px;
+            border-radius: 60px;
+            border: 1px solid rgba(139, 90, 43, 0.3);
+        }
+
+        /* 山峰装饰 (纯CSS小山) */
+        .mountain-divider {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px 0 20px;
+        }
+        .peak {
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 50px solid var(--primary);
+            opacity: 0.3;
+        }
+        .peak.small {
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 30px solid var(--secondary);
+        }
+
+        /* 博客卡片网格 */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 90, 43, 0.25);
+            box-shadow: 0 20px 30px -10px rgba(47, 82, 48, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -12px rgba(47, 82, 48, 0.35);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .card-content {
+            padding: 24px 20px 20px;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #5f5f5f;
+        }
+
+        .tag {
+            background: var(--secondary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            display: inline-block;
+        }
+
+        .tag i {
+            margin-right: 4px;
+            font-size: 0.7rem;
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-title a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card-title a:hover {
+            color: var(--secondary);
+            text-decoration: underline wavy var(--accent) 2px;
+        }
+
+        .card-excerpt {
+            color: #3f3f3f;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .read-more:hover {
+            border-bottom-color: var(--accent);
+            color: var(--secondary);
+        }
+
+        /* 页脚 */
+        .footer {
+            background: var(--primary);
+            color: #ddd;
+            padding: 32px 0;
+            margin-top: 80px;
+            border-top: 6px solid var(--secondary);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.6rem;
+            margin-left: 20px;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* 通用按钮 */
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .btn:hover {
+            background: var(--secondary);
+            border-color: var(--accent);
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 480px) {
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>This is my first page</h2>
-    <script src="main.js"></script>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">山野之间<span style="color: var(--accent);">·</span></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="#">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主体内容 -->
+    <main>
+        <!-- HERO 区域 -->
+        <section class="hero">
+            <div class="container">
+                <h1>岩壁 · 山径 · 技术笔记</h1>
+                <p>分享攀岩、徒步与户外运动的实用技巧与个人感悟</p>
+                <!-- 小山装饰 -->
+                <div class="mountain-divider">
+                    <div class="peak small"></div>
+                    <div class="peak"></div>
+                    <div class="peak small"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 博客卡片列表 -->
+        <div class="container">
+            <div class="blog-grid">
+                <!-- 卡片 1 - 攀岩技术训练 -->
+                <article class="blog-card">
+                    <img class="card-img" src="https://picsum.photos/id/1043/400/300" alt="攀岩训练" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="tag"><i class="fas-mountain"></i> 攀岩</span>
+                            <span>2025-03-16</span>
+                        </div>
+                        <h2 class="card-title"><a href="post.html">攀岩技术训练：脚法精准度提升指南</a></h2>
+                        <p class="card-excerpt">静态发力与脚法微调——想爬得更顺，先学会用脚“看”点。本文分享3个脚法专项练习，在家也能练。</p>
+                        <a href="post.html" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- 卡片 2 - 徒步装备清单 -->
+                <article class="blog-card">
+                    <img class="card-img" src="https://picsum.photos/id/1015/400/300" alt="徒步装备" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="tag"><i class="fas fa-tree"></i> 徒步</span>
+                            <span>2025-03-10</span>
+                        </div>
+                        <h2 class="card-title"><a href="#">轻量化徒步：我的十件必备装备</a></h2>
+                        <p class="card-excerpt">从背包到急救包，分享一套经过多次长线验证的轻量化系统，附重量清单与平替建议。</p>
+                        <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- 卡片 3 - 动态发力技巧 -->
+                <article class="blog-card">
+                    <img class="card-img" src="https://picsum.photos/id/1002/400/300" alt="动态发力" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="tag"><i class="fas-mountain"></i> 攀岩</span>
+                            <span>2025-03-02</span>
+                        </div>
+                        <h2 class="card-title"><a href="#">动态发力 (Dyno) 的技术拆解</a></h2>
+                        <p class="card-excerpt">很多人认为动态就是靠蛮力，其实核心是节奏和重心转移。分解三种动态发力模式及训练方法。</p>
+                        <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- 卡片 4 - 户外安全 -->
+                <article class="blog-card">
+                    <img class="card-img" src="https://picsum.photos/id/1070/400/300" alt="户外安全" loading="lazy">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="tag"><i class="fas fa-campground"></i> 综合</span>
+                            <span>2025-02-20</span>
+                        </div>
+                        <h2 class="card-title"><a href="#">户外风险预判：从天气到地形</a></h2>
+                        <p class="card-excerpt">结合几个真实案例，聊聊如何利用地形图、云图和经验避开常见的户外风险。</p>
+                        <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 更多文章按钮 (留空) -->
+            <div style="text-align: center; margin: 20px 0 40px;">
+                <button class="btn"><i class="fas fa-mountain"></i> 加载更多笔记</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>© 2025 山野之间 · 保持热爱 奔赴山海</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 小脚本：高亮当前页面导航（如果有需要） -->
+    <script>
+        // 简单高亮 (可选)
+    </script>
 </body>
 </html>
-alert('xxx')
-h2 {
-    color: red;
-}
